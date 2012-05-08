@@ -1,4 +1,8 @@
 <?php
+//LightwaveRF Energy Poller
+//Version 0.1
+//Author: Steve Irvine
+
 //This section is required for Cacti's script server
 //see http://www.cacti.net/downloads/docs/html/migration_php_scripts_to_script_server.html
 $no_http_headers = true;
