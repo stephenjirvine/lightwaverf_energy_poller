@@ -26,7 +26,7 @@ function ss_lwrfenergypoller ($myip, $wifilinkip, $sendport, $recvport, $broadca
 
 //TODO - Increment broadcast string to resolve potential race condition
 //Perhaps we could use the minute of the hour e.g. 10 minutes past =010
-$numbered_broadcast_string = date('Ni') + $broadcast_string
+$numbered_broadcast_string = date('Ni') . $broadcast_string
 
 //Send the broadcast string, as a UDP datagram to the bvroadcast address on your network
 $sock = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
