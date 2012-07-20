@@ -24,14 +24,10 @@ function ss_lwrfenergypoller ($myip, $wifilinkip, $sendport, $recvport, $broadca
 //$broadcast_string = '001,@?' to make the wifilink respond with energy usage data
 //I have left these as arguments to allow the re-use of the script for future LWRF fuctionality
 
-//TODO - Increment broadcast string to resolve potential race condition
-//Perhaps we could use the minute of the hour e.g. 10 minutes past =010
-$numbered_broadcast_string = date('Ni') + $broadcast_string
-
 //Send the broadcast string, as a UDP datagram to the bvroadcast address on your network
 $sock = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
 socket_set_option($sock, SOL_SOCKET, SO_BROADCAST, 1);
-socket_sendto($sock, $numbered_broadcast_string, strlen($numbered_broadcast_string), 0, '255.255.255.255', $sendport);
+socket_sendto($sock, $broadcast_string, strlen($broadcast_string), 0, '255.255.255.255', $sendport);
 socket_close($sock);
 
 //Listen for the response
