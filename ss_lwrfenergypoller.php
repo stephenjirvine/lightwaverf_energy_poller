@@ -15,15 +15,9 @@ if (!isset($called_by_script_server)) {
 	print call_user_func_array("ss_lwrfenergypoller", $_SERVER["argv"]);
 }
 
-//My Script starts here
+//The function parameters are passed in from Cacti
 function ss_lwrfenergypoller ($myip, $wifilinkip, $sendport, $recvport, $broadcast_string) {
-//$myip is the IP address of the computer issuing the command
-//$wifilinkip is the IP address of the wifilink
-//$sendport = 9760, the UDP port LightwaveRF sends on
-//$recvport = 9761, the UPD port LightwaveRF listens on
-//$broadcast_string = '001,@?' to make the wifilink respond with energy usage data
-//I have left these as arguments to allow the re-use of the script for future LWRF fuctionality
-
+	
 //Send the broadcast string, as a UDP datagram to the bvroadcast address on your network
 $sock = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
 socket_set_option($sock, SOL_SOCKET, SO_BROADCAST, 1);
